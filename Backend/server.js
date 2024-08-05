@@ -5,8 +5,14 @@ const port = 8000;
 const User = require("./db/user")
 const cors = require('cors'); // Import the cors package
 
+
+
 app.use(express.json());
 app.use(cors());
+
+app.get('/', (req,res)=>{
+  res.send("hy")
+})
 app.post('/register', async(req, res)=>{
   try{
     const {username, password} = req.body;
