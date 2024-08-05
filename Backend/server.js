@@ -27,23 +27,23 @@ app.post('/register', async(req, res)=>{
   }
 })
 
-app.post('/login', async(req, res)=>{
-  const {username , password} = req.body;
-  
-  const user = await User.findOne({username, password})
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
 
-  try{
-    if(!user){
-      return res.status(501).json({error:"invalid username or password"});
+  try {
+    const user = await User.findOne({ username, password });
+
+    if (!user) {
+      return res.status(401).json({ success: false, message: "Invalid username or password" });
     }
 
-    return res.status(201).json({message:"Login Successfully"})
+    return res.status(200).json({ success: true, message: "Login Successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: "Server Error" });
   }
+});
 
-  catch(err){
-    res.end(err)
-  }
-})
 
 app.post("/forgotpassword", async(req, res)=>{
   const {username} = req.body;
