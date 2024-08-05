@@ -10,7 +10,7 @@ const Login = () => {
   const handleLoginSubmit = async(e)=>{
     e.preventDefault()
     try{
-        const response = await axios.post('http://localhost:8000/login', loginData);
+        const response = await axios.post('https://login-h4lz.onrender.com/login', loginData);
         const {success ,message} = response.data;
         if(success){
             console.log("Login Sucessfully");
