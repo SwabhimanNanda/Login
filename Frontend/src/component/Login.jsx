@@ -16,7 +16,7 @@ const Login = () => {
       const { success, message } = response.data;
 
       if (success) {
-        console.log("Login Sucfully");
+        console.log(success.message);
         navigate('/'); // Redirect to home page
       } else {
         console.log(message);
